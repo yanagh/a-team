@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A-Team — беговая команда Альбины Наумовой</title>
+<meta name="description" content="Альбина Наумова — тренер беговой команды A-Team. Индивидуальные программы онлайн и персональные тренировки на стадионе.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#121A16;
+  --moss:#24332B;
+  --moss-2:#2F4237;
+  --fog:#F3F4EF;
+  --sage:#8FA094;
+  --amber:#E9A23B;
+  --text-dim:rgba(243,244,239,.66);
+  --line-dark:rgba(243,244,239,.14);
+  --line:rgba(18,26,22,.12);
+  --f:"Onest",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);font-size:18px;line-height:1.6;color:var(--forest);background:var(--fog);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:6px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+h1,h2,h3{font-weight:700;letter-spacing:-.035em;line-height:1}
+h2{font-size:clamp(40px,5.6vw,84px)}
+.lead{font-size:20px;line-height:1.55;max-width:56ch}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--f);font-weight:600;font-size:16px;text-decoration:none;padding:17px 28px;border-radius:999px;transition:background .25s,color .25s,box-shadow .25s;white-space:nowrap}
+.btn-amber{background:var(--amber);color:var(--forest)}
+.btn-amber:hover{background:#F4B65A}
+.btn-line{color:var(--fog);box-shadow:inset 0 0 0 1.5px rgba(243,244,239,.4)}
+.btn-line:hover{box-shadow:inset 0 0 0 1.5px var(--fog)}
+.btn-dark{background:var(--forest);color:var(--fog)}
+.btn-dark:hover{background:var(--moss-2)}
+
+/* header */
+.top{position:absolute;inset:0 0 auto;z-index:20}
+.top .wrap{height:96px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;color:var(--fog);text-decoration:none;font-weight:800;font-size:19px;letter-spacing:.04em}
+.logo svg{width:30px;height:26px}
+.nav{display:flex;align-items:center;gap:34px}
+.nav a{color:var(--text-dim);text-decoration:none;font-size:16px;transition:color .2s}
+.nav a:hover{color:var(--fog)}
+.nav .btn{color:var(--forest);padding:12px 22px}
+.nav .btn:hover{color:var(--forest)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;color:var(--fog);display:flex;align-items:flex-end;overflow:hidden;background:var(--forest)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg,rgba(18,26,22,.55) 0%,rgba(18,26,22,0) 30%,rgba(18,26,22,.2) 55%,rgba(18,26,22,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:72px}
+.hero h1{font-size:clamp(54px,9.4vw,152px);font-weight:700;letter-spacing:-.05em;line-height:.92;max-width:12ch}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:44px;flex-wrap:wrap}
+.hero-foot .lead{color:var(--text-dim)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.coach-chip{display:flex;align-items:center;gap:14px;margin-top:28px;font-size:15px;color:var(--text-dim)}
+.coach-chip img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 25%}
+.coach-chip b{display:block;color:var(--fog);font-weight:600;font-size:16px}
+
+section{padding:140px 0}
+.hero{padding:0}
+
+/* coach */
+.coach-grid{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.coach-photo{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:1/1;background:var(--moss)}
+.coach-photo img{width:100%;height:100%;object-fit:cover}
+.coach-photo figcaption{position:absolute;left:20px;bottom:20px;background:rgba(18,26,22,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--fog);padding:14px 20px;border-radius:16px;font-size:15px;line-height:1.35}
+.coach-photo figcaption b{display:block;font-size:17px;font-weight:600}
+.coach h2{margin-bottom:32px;max-width:10ch}
+.coach p{color:#3D4A42;max-width:52ch}
+.coach p+p{margin-top:18px}
+.pillars{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid var(--line);padding-top:28px}
+.pillars h3{font-size:17px;letter-spacing:-.01em;line-height:1.3;margin-bottom:8px;font-weight:600}
+.pillars p{font-size:15px;line-height:1.5;color:#5A675E}
+
+/* motion reels */
+.motion{background:var(--forest);color:var(--fog)}
+.motion-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:64px}
+.motion-head .lead{color:var(--text-dim)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.reel{position:relative;aspect-ratio:9/16;border-radius:28px;overflow:hidden;background:var(--moss)}
+.reel video{width:100%;height:100%;object-fit:cover}
+.reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(18,26,22,.88))}
+.reel figcaption{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}
+.reel .muscle{display:inline-block;font-size:14px;font-weight:600;color:var(--forest);background:var(--amber);padding:5px 12px;border-radius:999px;margin-bottom:12px}
+.reel h3{font-size:26px;letter-spacing:-.02em;line-height:1.15;margin-bottom:8px}
+.reel p{font-size:15px;line-height:1.45;color:var(--text-dim)}
+.reel:nth-child(2){transform:translateY(48px)}
+.motion-note{margin-top:110px;padding-top:28px;border-top:1px solid var(--line-dark);display:flex;justify-content:space-between;gap:32px;align-items:center;flex-wrap:wrap;color:var(--text-dim)}
+.motion-note strong{color:var(--fog);font-weight:600}
+
+/* plans */
+.plans-head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+.plans-head .lead{color:#4C5952;max-width:44ch}
+.plan{display:grid;grid-template-columns:150px 1.1fr 1.4fr auto;gap:40px;align-items:start;padding:44px 0;border-top:1px solid var(--line)}
+.plan:last-child{border-bottom:1px solid var(--line)}
+.tag{display:inline-block;font-size:14px;font-weight:600;padding:6px 14px;border-radius:999px;background:var(--moss);color:var(--fog)}
+.tag.off{background:var(--amber);color:var(--forest)}
+.plan h3{font-size:clamp(30px,3vw,42px);margin-bottom:12px}
+.plan .for{color:#5A675E;font-size:17px;line-height:1.5}
+.plan ul{list-style:none;display:grid;gap:10px;font-size:17px;line-height:1.45}
+.plan li{display:grid;grid-template-columns:18px 1fr;gap:12px}
+.plan li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sage);margin-top:.55em}
+.plan.off li::before{background:var(--amber)}
+.plan .btn{margin-top:4px}
+
+/* steps */
+.steps-sec{background:var(--moss);color:var(--fog)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:72px;border-top:1px solid var(--line-dark)}
+.step{padding:32px 28px 0 0;position:relative}
+.step::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--amber)}
+.step .n{font-size:15px;color:var(--sage);margin-bottom:22px;display:block}
+.step h3{font-size:22px;letter-spacing:-.02em;margin-bottom:10px}
+.step p{font-size:16px;line-height:1.5;color:var(--text-dim)}
+
+/* family */
+.family{display:grid;grid-template-columns:5fr 7fr;gap:80px;align-items:center}
+.family h2{margin-bottom:32px}
+.family blockquote{font-size:clamp(22px,2.2vw,30px);line-height:1.35;letter-spacing:-.015em;color:#2C3830;font-weight:400}
+.gallery{display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:260px 260px;gap:14px}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.gallery img:first-child{grid-row:span 2}
+
+/* contact */
+.contact{position:relative;color:var(--fog);overflow:hidden;padding:180px 0;background:var(--forest)}
+.contact video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.contact::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(18,26,22,.95) 0%,rgba(18,26,22,.6) 60%,rgba(18,26,22,.3))}
+.contact .wrap{position:relative;z-index:2}
+.contact h2{max-width:11ch;margin-bottom:28px}
+.contact .lead{color:var(--text-dim);margin-bottom:40px}
+.contact-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+footer{background:var(--forest);color:var(--sage);font-size:15px;padding:32px 0;border-top:1px solid var(--line-dark)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:var(--fog)}
+
+/* responsive */
+@media (max-width:1040px){
+  .coach-grid,.motion-head,.family{grid-template-columns:1fr;gap:48px}
+  .plan{grid-template-columns:1fr;gap:18px}
+  .steps{grid-template-columns:1fr 1fr;row-gap:44px}
+  .reels{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:none}
+  .reel{scroll-snap-align:start}
+  .reel:nth-child(2){transform:none}
+  .motion-note{margin-top:48px}
+}
+@media (max-width:720px){
+  body{font-size:17px}
+  .wrap{padding:0 22px}
+  .nav a:not(.btn){display:none}
+  section{padding:96px 0}
+  .pillars{grid-template-columns:1fr;gap:20px}
+  .steps{grid-template-columns:1fr}
+  .gallery{grid-template-rows:180px 180px}
+  .hero .wrap{padding-bottom:44px}
+  .contact{padding:120px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="A-Team, на главную">
+      <svg viewBox="0 0 30 26" aria-hidden="true"><path d="M15 0 30 26H0Z" fill="#F3F4EF"/><path d="M15 11 21 22H9Z" fill="#E9A23B"/></svg>
+      A-TEAM
+    </a>
+    <nav class="nav" aria-label="Основное меню">
+      <a href="#coach">Тренер</a>
+      <a href="#motion">Бег в деталях</a>
+      <a href="#plans">Форматы</a>
+      <a href="#how">Как начать</a>
+      <a class="btn btn-amber" href="#contact">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" aria-labelledby="hero-title">
+  <video autoplay muted loop playsinline poster="assets/hero.jpg" aria-hidden="true">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <h1 id="hero-title">Бег, который понимает тело</h1>
+    <div class="hero-foot">
+      <div>
+        <p class="lead">Индивидуальные программы для дистанций от 5 км до марафона. Онлайн из любой точки мира или на стадионе вместе с тренером.</p>
+        <div class="coach-chip">
+          <img src="assets/albina.jpg" alt="">
+          <span><b>Альбина Наумова</b>тренер A-Team</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-amber" href="#plans">Выбрать формат</a>
+        <a class="btn btn-line" href="#motion">Бег в деталях</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coach" id="coach" aria-labelledby="coach-title">
+  <div class="wrap coach-grid">
+    <figure class="coach-photo">
+      <img src="assets/albina.jpg" alt="Альбина Наумова, тренер беговой команды A-Team">
+      <figcaption><b>Альбина Наумова</b>Тренер по бегу, основатель A-Team</figcaption>
+    </figure>
+    <div>
+      <h2 id="coach-title">Сначала тело, потом километры</h2>
+      <p>Альбина ведёт A-Team — беговую семью, где тренируются и новички, и марафонцы. Её подход простой: понять, как работает ваше тело, и только потом наращивать нагрузку.</p>
+      <p>Поэтому каждая программа начинается со знакомства и оценки, а не с шаблона из интернета. Вы бежите дальше и быстрее — и без травм.</p>
+      <div class="pillars">
+        <div><h3>Индивидуальная программа</h3><p>Под ваш уровень, график и цель.</p></div>
+        <div><h3>Регулярные корректировки</h3><p>Нагрузка меняется по отчётам и самочувствию.</p></div>
+        <div><h3>Подготовка к стартам</h3><p>Темп, тактика и восстановление.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="motion" id="motion" aria-labelledby="motion-title">
+  <div class="wrap">
+    <div class="motion-head">
+      <h2 id="motion-title">Бег в деталях</h2>
+      <p class="lead">Каждый шаг — это работа десятков мышц. Альбина объясняет, какие из них включаются в каждой фазе, и подбирает упражнения, чтобы они работали точнее.</p>
+    </div>
+    <div class="reels">
+      <figure class="reel">
+        <video muted loop playsinline preload="metadata" poster="assets/reel-start.jpg"><source src="assets/reel-start.mp4" type="video/mp4"></video>
+        <figcaption><span class="muscle">Икроножная и ахилл</span><h3>Старт</h3><p>Ахиллово сухожилие запасает энергию и отдаёт её в первом толчке.</p></figcaption>
+      </figure>
+      <figure class="reel">
+        <video muted loop playsinline preload="metadata" poster="assets/reel-easy.jpg"><source src="assets/reel-easy.mp4" type="video/mp4"></video>
+        <figcaption><span class="muscle">Средняя ягодичная</span><h3>Лёгкий бег</h3><p>Держит таз ровно, когда вы стоите на одной ноге, а в беге это каждый шаг.</p></figcaption>
+      </figure>
+      <figure class="reel">
+        <video muted loop playsinline preload="metadata" poster="assets/reel-race.jpg"><source src="assets/reel-race.mp4" type="video/mp4"></video>
+        <figcaption><span class="muscle">Квадрицепс</span><h3>Забег</h3><p>Гасит удар при приземлении и первым устаёт на длинной дистанции.</p></figcaption>
+      </figure>
+    </div>
+    <div class="motion-note">
+      <p><strong>Скоро — анатомические разборы.</strong> Мышцы в работе, а затем тот же шаг у живого бегуна.</p>
+      <a class="btn btn-line" href="https://www.instagram.com/ateam_run" target="_blank" rel="noopener">Следить в Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section id="plans" aria-labelledby="plans-title">
+  <div class="wrap">
+    <div class="plans-head">
+      <h2 id="plans-title">Три формата</h2>
+      <p class="lead">Два онлайн-формата для самостоятельных тренировок и персональные занятия на стадионе.</p>
+    </div>
+
+    <article class="plan">
+      <div><span class="tag">Онлайн</span></div>
+      <div><h3>Программа</h3><p class="for">Для тех, кто уже бегает и хочет тренироваться по системе.</p></div>
+      <ul>
+        <li>Индивидуальный план тренировок</li>
+        <li>Еженедельный разбор ваших отчётов</li>
+        <li>Корректировка нагрузки по самочувствию</li>
+        <li>Связь с тренером в мессенджере</li>
+      </ul>
+      <a class="btn btn-dark" href="https://ig.me/m/aljbina_naumova" target="_blank" rel="noopener">Узнать стоимость</a>
+    </article>
+
+    <article class="plan">
+      <div><span class="tag">Онлайн</span></div>
+      <div><h3>Сопровождение</h3><p class="for">Для подготовки к конкретному старту или личному рекорду.</p></div>
+      <ul>
+        <li>Всё из формата «Программа»</li>
+        <li>Видеоразбор техники бега</li>
+        <li>Силовые и ОФП под вашу дистанцию</li>
+        <li>Подготовка к старту: темп, тактика, питание</li>
+        <li>Созвон с тренером раз в месяц</li>
+      </ul>
+      <a class="btn btn-dark" href="https://ig.me/m/aljbina_naumova" target="_blank" rel="noopener">Узнать стоимость</a>
+    </article>
+
+    <article class="plan off">
+      <div><span class="tag off">Офлайн</span></div>
+      <div><h3>Персонально</h3><p class="for">Тренировки один на один на стадионе.</p></div>
+      <ul>
+        <li>Постановка техники бега рядом с тренером</li>
+        <li>Беговые и функциональные тренировки</li>
+        <li>Тестирование и контроль прогресса</li>
+        <li>План на дни между встречами</li>
+      </ul>
+      <a class="btn btn-dark" href="https://ig.me/m/aljbina_naumova" target="_blank" rel="noopener">Узнать стоимость</a>
+    </article>
+  </div>
+</section>
+
+<section class="steps-sec" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <h2 id="how-title">Как начать</h2>
+    <div class="steps">
+      <div class="step"><span class="n">Шаг 1</span><h3>Сообщение</h3><p>Пишете Альбине и коротко рассказываете о цели.</p></div>
+      <div class="step"><span class="n">Шаг 2</span><h3>Знакомство</h3><p>Опыт, график, травмы и ближайшие старты.</p></div>
+      <div class="step"><span class="n">Шаг 3</span><h3>Оценка</h3><p>Тестовая тренировка или видео вашего бега.</p></div>
+      <div class="step"><span class="n">Шаг 4</span><h3>Программа</h3><p>План на ближайшие недели с понятными заданиями.</p></div>
+      <div class="step"><span class="n">Шаг 5</span><h3>Корректировки</h3><p>Вы присылаете отчёты, тренер меняет нагрузку.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="family-title">
+  <div class="wrap family">
+    <div>
+      <h2 id="family-title">Running Family</h2>
+      <blockquote>A-Team — это не только план тренировок. Это люди, которые встречаются на стадионе, вместе едут на старты и радуются чужим рекордам как своим.</blockquote>
+    </div>
+    <div class="gallery">
+      <img src="assets/race-1.jpg" alt="Бегуны на дистанции забега">
+      <img src="assets/race-2.jpg" alt="Бегун на дистанции">
+      <img src="assets/start-1.jpg" alt="Спортсмен на старте на беговой дорожке">
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <video autoplay muted loop playsinline poster="assets/track.jpg" aria-hidden="true"><source src="assets/track.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <h2 id="contact-title">Начните с одного сообщения</h2>
+    <p class="lead">Напишите Альбине в Instagram — она ответит на вопросы, расскажет о стоимости и поможет выбрать формат.</p>
+    <div class="contact-actions">
+      <a class="btn btn-amber" href="https://ig.me/m/aljbina_naumova" target="_blank" rel="noopener">Написать Альбине</a>
+      <a class="btn btn-line" href="https://www.instagram.com/ateam_run" target="_blank" rel="noopener">Команда A-Team</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© A-Team, беговая команда Альбины Наумовой</span>
+    <span><a href="https://www.instagram.com/ateam_run" target="_blank" rel="noopener">@ateam_run</a>&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/aljbina_naumova" target="_blank" rel="noopener">@aljbina_naumova</a></span>
+  </div>
+</footer>
+
+<script>
+// Reels play only while visible; respect reduced motion
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video').forEach(v=>{v.removeAttribute('autoplay');v.pause()});return;
+  }
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    e.isIntersecting ? e.target.play().catch(()=>{}) : e.target.pause();
+  }),{threshold:.35});
+  document.querySelectorAll('.reel video').forEach(v=>io.observe(v));
+})();
+</script>
+</body>
+</html>
